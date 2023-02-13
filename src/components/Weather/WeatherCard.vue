@@ -40,8 +40,8 @@
     export default {
         data() {
             return {
-                apiKey: '34ebb765a570b348cfd194085adb08c7',
-                baseURL: 'https://api.openweathermap.org/data/2.5/',
+                apiKey: process.env.VUE_APP_API_KEY,
+                baseURL: process.env.VUE_APP_BASE_URL,
                 city: 'London',
                 weather: {},
                 image: img1,
@@ -57,7 +57,6 @@
                 this.weather = res.data
             }).catch(err => console.log(err))
             },
-
         },
     }
 </script>
