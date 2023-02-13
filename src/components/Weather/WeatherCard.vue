@@ -40,12 +40,12 @@
     export default {
         data() {
             return {
-            apiKey: '34ebb765a570b348cfd194085adb08c7',
-            baseURL: 'https://api.openweathermap.org/data/2.5/',
-            city: 'London',
-            weather: {},
-            image: img1,
-            icon: [icon1, icon2, icon3, icon4]
+                apiKey: '34ebb765a570b348cfd194085adb08c7',
+                baseURL: 'https://api.openweathermap.org/data/2.5/',
+                city: 'London',
+                weather: {},
+                image: img1,
+                icon: [icon1, icon2, icon3, icon4]
             }
         },
         created(){
@@ -54,7 +54,6 @@
         methods: {
             getCurrentWeather(){
             axios.get(`${this.baseURL}weather?q=${this.city}&appid=${this.apiKey}&lang=ru&units=metric`).then(res => {
-                console.log(res.data)
                 this.weather = res.data
             }).catch(err => console.log(err))
             },

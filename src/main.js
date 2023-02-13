@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import router from "./router";
+import roter from "./router";
 import "./assets/app.css";
 
-const app = createApp(App).use(router);
+const app = createApp(App).use(roter);
 app.mount("#app");
