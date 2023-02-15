@@ -1,27 +1,27 @@
 <template>
-    <div class="max-w-xs border-solid border-2 rounded p-2">
-        <h2 class="mb-2 text-3xl font-thin">{{ weather.name }}</h2>
+    <div v-if="$store.state.location !== null" class="max-w-xs border-solid border-2 rounded p-2">
+        <h2 class="mb-2 text-3xl font-thin">{{ $store.state.location.name }}</h2>
         <div class="flex justify-between mb-2">
             <img :src="image" class="w-24 h-24 m-0"/>
-            <p class="text-5xl font-medium my-auto">{{Math.round(weather.main?.temp)}}&deg;C</p>
+            <p class="text-5xl font-medium my-auto">{{Math.round($store.state.location.main.temp)}}&deg;C</p>
         </div>
-        <p class="mb-2 text-base font-medium">Чувствуется, что {{Math.round(weather.main?.feels_like)}}&deg;C.</p>
+        <p class="mb-2 text-base font-medium">Чувствуется, что {{Math.round($store.state.location.main.feels_like)}}&deg;C.</p>
         <div class="grid grid-cols-2 gap-2">
             <div class="flex">
                 <img :src="icon[2]" class="w-6 h-6 mr-2"/>
-                <p class="text-xs">{{weather.wind?.speed}}m/s</p>
+                <p class="text-xs">{{$store.state.location.wind.speed}}m/s</p>
             </div>
             <div class="flex">
                 <img :src="icon[0]" class="w-6 h-6 mr-2"/>
-                <p class="text-xs">{{weather.main?.pressure}}hPa</p>
+                <p class="text-xs">{{$store.state.location.main.pressure}}hPa</p>
             </div>
             <div class="flex">
                 <img :src="icon[3]" class="w-6 h-6 mr-2"/>
-                <p class="text-xs">Влажность: {{weather.main?.humidity}}%</p>
+                <p class="text-xs">Влажность: {{$store.state.location.main.humidity}}%</p>
             </div>
             <div class="flex">
                 <img :src="icon[1]" class="w-6 h-6 mr-2"/>
-                <p class="text-xs">Видимость: {{Math.round(weather.visibility / 1000)}}km</p>
+                <p class="text-xs">Видимость: {{Math.round($store.state.location.visibility / 1000)}}km</p>
             </div>
         </div>
     </div>
