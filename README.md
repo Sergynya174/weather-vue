@@ -1,19 +1,22 @@
-# weather-vue
+# Прогноз погоды на Vue
 
-## Project setup
-```
-npm install
-```
+### Описание проекта: 
+Получение прогноза погоды городов во всем мире
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Технологии:
++ Vue.js
++ Vuex
++ TailwindCSS
++ Axios
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Функционал: 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
++ Добаление карточек погоды городов
++ Удаление карточек городов
+
+
+### Запуск проекта локально
+
+`npm run serve` — запускает приложение в браузере
+
+[Ссылка на домен](https://sergynya174.github.io/vue-weather/)
