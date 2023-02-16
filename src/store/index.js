@@ -4,20 +4,20 @@ import axios from "axios";
 const store = createStore({
   state: {
     location: null,
+    locations: [],
   },
   mutations: {
-    async getCurrentWeather(state, obj) {
+    async getCurrentWeather(state, city) {
       state.location = await axios
         .get(
-          `${process.env.VUE_APP_BASE_URL}weather?q=${obj.city}&appid=${process.env.VUE_APP_API_KEY}&lang=ru&units=metric`
+          `${process.env.VUE_APP_BASE_URL}weather?q=${city}&appid=${process.env.VUE_APP_API_KEY}&lang=ru&units=metric`
         )
         .then((res) => res.data)
         .catch((err) => console.log(err));
+      state.locations.unshift(state.location);
     },
     deleteWeather(state, id) {
-      if (state.location.id === id) {
-        state.splice(i, 1);
-      }
+      state.locations = state.locations.filter((item) => item.id !== id);
     },
   },
   actions: {},
