@@ -1,6 +1,7 @@
 <template>
     <div v-for="location in $store.state.locations" v-if="$store.state.location !== null" class="max-w-xs border-solid border-2 rounded p-2">
-        <h2 class="mb-2 text-3xl font-thin">{{ location?.name }}</h2>
+        <h2 class="mb-2 text-3xl font-thin">{{ location?.name }}, {{ location?.sys.country }}</h2>
+        <p class="mb-2 text-xl font-thin">{{ dateBuilder() }} {{ imageBuilder(location) }}</p>
         <div class="flex justify-between mb-2">
             <img :src="image" class="w-24 h-24 m-0"/>
             <p class="text-5xl font-medium my-auto">{{Math.round(location?.main.temp)}}&deg;C</p>
@@ -41,10 +42,40 @@
             return {
                 apiKey: process.env.VUE_APP_API_KEY,
                 baseURL: process.env.VUE_APP_BASE_URL,
-                city: 'London',
-                image: img1,
+                city: '',
+                image: [img1, img2, img3, img4],
                 icon: [icon1, icon2, icon3, icon4]
             }
         },
+        methods: {
+            dateBuilder() {
+                let d = new Date();
+                let months = [
+                    "Январь",
+                    "Февраль",
+                    "Март",
+                    "Апрель",
+                    "Май",
+                    "Июнь",
+                    "Июль",
+                    "Август",
+                    "Сентябрь",
+                    "Октябрь",
+                    "Ноябрь",
+                    "Декабрь",
+                ];
+                let date = d.getDate();
+                let month = months[d.getMonth()];
+                let year = d.getFullYear();
+                return `${date} ${month} ${year}`;
+            },
+            imageBuilder({ weather }) {
+                const weatherMain = weather.map(({description}) => description)
+                //Rain - Дождь
+                //Clouds - Облака
+                //Clear - Ясно
+                //Rain - Дождь
+            }
+        }
     }
 </script>
