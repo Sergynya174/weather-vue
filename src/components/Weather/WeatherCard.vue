@@ -1,9 +1,9 @@
 <template>
-    <div v-for="location in $store.state.locations" v-if="$store.state.location !== null" class="max-w-xs border-solid border-2 rounded p-2">
+    <div v-for="location in $store.state.locations" v-if="$store.state.location !== null" class="w-64 border-solid border-2 rounded p-2">
         <h2 class="mb-2 text-3xl font-thin">{{ location?.name }}, {{ location?.sys.country }}</h2>
-        <p class="mb-2 text-xl font-thin">{{ dateBuilder() }} {{ imageBuilder(location) }}</p>
+        <p class="mb-2 text-xl font-thin">{{ dateBuilder() }}</p>
         <div class="flex justify-between mb-2">
-            <img :src="image" class="w-24 h-24 m-0"/>
+            <img :src="imageBuilder(location)" class="w-24 h-24 m-0"/>
             <p class="text-5xl font-medium my-auto">{{Math.round(location?.main.temp)}}&deg;C</p>
         </div>
         <p class="mb-2 text-base font-medium">Чувствуется, что {{Math.round(location?.main.feels_like)}}&deg;C.</p>
@@ -33,6 +33,8 @@
     import img2 from '@/assets/foog.png'
     import img3 from '@/assets/snowy.png'
     import img4 from '@/assets/sun.png'
+    import img5 from '@/assets/cloud.png'
+    import img6 from '@/assets/rain.png'
     import icon1 from '@/assets/atmospheric.png'
     import icon2 from '@/assets/visibility.png'
     import icon3 from '@/assets/wind-socket.png'
@@ -43,7 +45,6 @@
                 apiKey: process.env.VUE_APP_API_KEY,
                 baseURL: process.env.VUE_APP_BASE_URL,
                 city: '',
-                image: [img1, img2, img3, img4],
                 icon: [icon1, icon2, icon3, icon4]
             }
         },
@@ -69,12 +70,21 @@
                 let year = d.getFullYear();
                 return `${date} ${month} ${year}`;
             },
-            imageBuilder({ weather }) {
-                const weatherMain = weather.map(({description}) => description)
-                //Rain - Дождь
-                //Clouds - Облака
-                //Clear - Ясно
-                //Rain - Дождь
+            imageBuilder({weather}) {
+                const weatherMain = weather[0].description
+                if(weatherMain === 'пасмурно'){
+                    return img5
+                } else if(weatherMain === 'облачно с прояснениями'){
+                    return img1
+                } else if(weatherMain === 'ясно'){
+                    return img4
+                } else if(weatherMain === 'небольшой проливной дождь'){
+                    return img6
+                } else if(weatherMain === 'небольшой снег'){
+                    return img3
+                } else if(weatherMain === 'туман'){
+                    return img2
+                }
             }
         }
     }
