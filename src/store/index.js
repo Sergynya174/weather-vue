@@ -7,20 +7,28 @@ const store = createStore({
     locations: [],
   },
   mutations: {
-    async getCurrentWeather(state, city) {
-      state.location = await axios
-        .get(
-          `${process.env.VUE_APP_BASE_URL}weather?q=${city}&appid=${process.env.VUE_APP_API_KEY}&lang=ru&units=metric`
-        )
-        .then((res) => res.data)
-        .catch((err) => console.log(err));
-      state.locations.unshift(state.location);
+    setCurrentWeather(state, weather) {
+      state.location = weather;
+      state.locations.unshift(weather);
     },
     deleteWeather(state, id) {
       state.locations = state.locations.filter((item) => item.id !== id);
     },
   },
-  actions: {},
+  actions: {
+    async getCurrentWeather({ commit }, city) {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_APP_BASE_URL}weather?q=${city}&appid=${
+            import.meta.env.VITE_APP_API_KEY
+          }&lang=ru&units=metric`
+        );
+        commit("setCurrentWeather", response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
   getters: {},
 });
 

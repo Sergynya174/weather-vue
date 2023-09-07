@@ -1,13 +1,47 @@
-<template>
-  <nav class="flex  w-full m-auto space-x-3 text-center p-2">
-    <router-link class="grow" active-class="border-black border-b-2" to="/">Погода</router-link>
-    <router-link class="grow" active-class="border-black border-b-2" to="/settings">Настройки</router-link>
-  </nav>
-  <router-view/>
-</template>
+<script setup>
 
-<script>
 </script>
 
-<style>
+<template>
+  <div class="page">
+    <nav class="container-link">
+      <router-link class="link" active-class="active" to="/">Погода</router-link>
+      <router-link class="link" active-class="active" to="/settings">Настройки</router-link>
+    </nav>
+    <router-view/>
+  </div>
+</template>
+
+<style lang="sass" scoped>
+@import './assets/styles/main'
+.page
+  position: relative
+  display: flex
+  justify-content: center
+  align-items: center
+  min-height: 100vh
+  background-color: #59585d
+  flex-direction: column
+
+.container-link
+  display: flex
+  width: 100%
+  margin: 10px auto 0
+  align-items: center
+  justify-content: space-evenly
+  gap: 10px
+  
+.link
+  text-decoration: none
+
+.active
+  background-color: #0e100f
+  max-width: 170px
+  width: 35%
+  height: 50px
+  border-radius: 10px 10px 0 0
+  display: flex
+  align-items: center
+  justify-content: center
+  
 </style>
