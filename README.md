@@ -8,7 +8,7 @@
 
 - Vue.js
 - Vuex
-- TailwindCSS
+- Sass
 - Axios
 
 ### Функционал:
