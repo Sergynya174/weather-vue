@@ -1,29 +1,23 @@
-# weather-vue
+# Прогноз погоды на Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+### Описание проекта:
 
-## Recommended IDE Setup
+Получение прогноза погоды городов во всем мире
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### Технологии:
 
-## Customize configuration
+- Vue.js
+- Vuex
+- TailwindCSS
+- Axios
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### Функционал:
 
-## Project Setup
+- Добаление карточек погоды городов
+- Удаление карточек городов
 
-```sh
-npm install
-```
+### Запуск проекта локально
 
-### Compile and Hot-Reload for Development
+`npm run dev` — запускает приложение в браузере
 
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+[Ссылка на домен](https://sergynya174.github.io/vue-weather/)
