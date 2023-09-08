@@ -38,8 +38,10 @@ export default {
     min-height: 670px
 
 .container-info
-    display: flex
+    display: grid
     gap: 10px
+    grid-template-columns: repeat(auto-fit, minmax(150px, 0))
+    padding: 0
 
 .info
     height: 100%
@@ -49,8 +51,8 @@ export default {
     border-radius: 25px
     max-width: 200px
     display: flex
-    gap: 10px
     align-items: center
+    justify-content: space-between
 
 .title
     font-size: 1rem
