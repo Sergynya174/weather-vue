@@ -6,13 +6,13 @@ const props = defineProps({
     required: true
   }
 })
-const today = new Date().toLocaleString("en-En", {weekday: "short", year: "numeric", month: "long", day: "numeric"})
+
 </script>
 
 <template>
   <div class="summary">
     <div
-      :style="`background-image: url('/src/assets/img/weather-main/${location?.weather[0].description}.png');`"
+      :style="`background-image: url('/weather-main/${location?.weather[0].description}.png');`"
       class="pic-main"
     ></div>
     <div class="weather">
