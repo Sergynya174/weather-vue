@@ -6,7 +6,7 @@
   <div class="page">
     <nav class="container-link">
       <router-link class="link" active-class="active" to="/">Погода</router-link>
-      <router-link class="link" active-class="active" to="/settings">Настройки</router-link>
+      <router-link class="link" active-class="active" to="/history">Настройки</router-link>
     </nav>
     <router-view/>
   </div>

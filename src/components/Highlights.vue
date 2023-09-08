@@ -1,4 +1,18 @@
 <script setup>
+import {computed} from 'vue'
+import {getPressureMm, getTime} from '../utils'
+const props = defineProps({
+  location: {
+    type: [Object, null],
+    required: true
+  }
+})
+
+const timezone = computed(() => props.location?.timezone)
+
+const sumriseTime = computed(() => {
+  return getTime(props.location?.sys.sunrise + timezone.value)
+})
 </script>
 
 <template>
@@ -17,7 +31,7 @@
                 <div class="card-justify">
                   <div class="info-main">
                     <div class="info-main-num">
-                      3.6
+                      {{ location?.wind.speed }}
                     </div>
                     <div class="info-main-text">
                       m/s
@@ -25,7 +39,7 @@
                   </div> 
                   <div class="info-main">
                     <div class="info-main-num">
-                      350
+                      {{ location?.wind.deg }}
                     </div>
                     <div class="info-main-text">
                       deg
@@ -39,9 +53,9 @@
                 Wind gusts
               </div>
               <div class="card-small-info">
-                <div class="card-small-data">
+                <div v-if="location?.wind.gust" class="card-small-data">
                   <div class="info-main-num">
-                    8.4
+                    {{ Math.round(location?.wind.gust) }}
                   </div>
                   <div class="info-main-text">
                     m/s
@@ -68,7 +82,7 @@
                 <div class="card-centered">
                   <div class="info-main">
                     <div class="info-main-num">
-                      765
+                      {{getPressureMm(location?.main.pressure)}}
                     </div>
                     <div class="info-main-text">
                       mm
@@ -84,7 +98,7 @@
               <div class="card-small-info">
                 <div class="card-small-data">
                   <div class="info-main-num">
-                    21
+                    {{ Math.round(location?.main.feels_like) }}
                   </div>
                   <div class="info-main-text">
                     °C
@@ -113,7 +127,7 @@
                       Sunrise
                     </div>
                     <div class="state-time">
-                      07:31:42
+                      {{ sumriseTime }}
                     </div>
                   </div>
                   <div class="state">
@@ -135,7 +149,7 @@
               <div class="card-small-info">
                 <div class="card-small-data">
                   <div class="info-main-num">
-                    80
+                    {{ location?.clouds.all }}
                   </div>
                   <div class="info-main-text">
                     %

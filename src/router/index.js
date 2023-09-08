@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import WeatherPage from "../views/WeatherPage.vue";
-//import SettingsPage from "../views/SettingsPage.vue";
+import HistoryPage from "../views/HistoryPage.vue";
 
 const routes = [
   {
@@ -8,11 +8,11 @@ const routes = [
     name: "weather",
     component: WeatherPage,
   },
-  // {
-  //   path: "/settings",
-  //   name: "settings",
-  //   component: SettingsPage,
-  // },
+  {
+    path: "/history",
+    name: "history",
+    component: HistoryPage,
+  },
 ];
 
 const router = createRouter({

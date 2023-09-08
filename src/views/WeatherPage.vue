@@ -1,11 +1,12 @@
 <script>
 import WeatherSummary from '../components/WeatherSummary.vue';
 import Highlights from '../components/Highlights.vue';
+import { mapState } from "vuex";
 
 export default {
   data() {
     return {
-      city: "",
+      city: ""
     };
   },
   components: {
@@ -19,7 +20,16 @@ export default {
       }
     },
   },
-};
+  mounted() {
+    if (!this.location || !this.location.name) {
+      this.city = "Moscow";
+      this.handleClickWeater();
+    }
+  },
+  computed: {
+  ...mapState(["location", "locations"]),
+  },
+}
 </script>
 
 <template>
@@ -32,11 +42,11 @@ export default {
               <div class="city-inner">
                 <input type="text" class="search" v-model="city" @keydown.enter="handleClickWeater">
               </div>
-              <WeatherSummary />
+              <WeatherSummary :location="location" />
             </div>
           </section>
           <section class="section section-right">
-            <Highlights />
+            <Highlights :location="location" />
           </section> 
         </div>
         <div class="sections">
@@ -49,7 +59,7 @@ export default {
                 <div class="block-bottom-texts">
                   <div class="block-bottom-text-block">
                     <div class="block-bottom-text-block-title">
-                      Longitude: 2.3488
+                      Longitude: {{ location?.coord.lat }}
                     </div>
                     <div class="block-bottom-text-block-desc">
                       Longitude measures distance east or west of the prime meridian.
@@ -57,7 +67,7 @@ export default {
                   </div>
                   <div class="block-bottom-text-block">
                     <div class="block-bottom-text-block-title">
-                      Latitude: 48.8534
+                      Latitude: {{ location?.coord.lon }}
                     </div>
                     <div class="block-bottom-text-block-desc">
                       Latitude lines start at the equator (0 degrees latitude) and run east and west, parallel to the equator. 
@@ -76,7 +86,7 @@ export default {
                 <div class="block-bottom-texts">
                   <div class="block-bottom-text-block">
                     <div class="block-bottom-text-block-title">
-                      Humidity: 60 %
+                      Humidity: {{ location?.main.humidity }}
                     </div>
                     <div class="block-bottom-text-block-desc">
                       Humidity is the concentration of water vapor present in the air. Water vapor, the gaseous state of water, is generally invisible to the human eye.

@@ -21,7 +21,7 @@ const store = createStore({
         const response = await axios.get(
           `${import.meta.env.VITE_APP_BASE_URL}weather?q=${city}&appid=${
             import.meta.env.VITE_APP_API_KEY
-          }&lang=ru&units=metric`
+          }&units=metric`
         );
         commit("setCurrentWeather", response.data);
       } catch (err) {
