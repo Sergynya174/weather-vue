@@ -6,7 +6,7 @@ const props = defineProps({
     required: true
   }
 })
-
+const today = new Date().toLocaleString("en-En", {weekday: "short", year: "numeric", month: "long", day: "numeric"})
 </script>
 
 <template>
