@@ -20,4 +20,4 @@
 
 `npm run dev` — запускает приложение в браузере
 
-[Ссылка на домен](https://sergynya174.github.io/vue-weather/)
+[Ссылка на домен](https://sergynya174.github.io/weather-vue/)
