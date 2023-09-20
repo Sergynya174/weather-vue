@@ -4,6 +4,10 @@
 
 Получение прогноза погоды во всем мире
 
+### Внешний вид приложения:
+
+![alt text](https://github.com/Sergynya174/weather-vue/blob/main/img.png?raw=true)
+
 ### Технологии:
 
 - Vue.js
